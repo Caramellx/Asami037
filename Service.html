@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Shop</title>
+  <meta name="description" content="ร้านรับทำป้ายทุกชนิด ป้ายไวนิล ป้ายอะคริลิก ป้ายไฟ LED ติดตั้งรวดเร็ว รับออกแบบ ผลิต ติดตั้ง ครบจบในที่เดียว" />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#ff6a00;
+      --accent-2:#0ea5e9;
+      --dark:#0f1724;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --bg:#f7f8fb;
+      --glass: rgba(255,255,255,0.6);
+      --shadow: 0 10px 30px rgba(2,8,20,0.08);
+      --radius: 18px;
+      --maxw: 1200px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:'Kanit', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--dark); background: linear-gradient(180deg,var(--bg),#fff);
+    }
+    /* Nav */
+    .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px); background:rgba(255,255,255,0.8); box-shadow: var(--shadow)}
+    .nav-inner{max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 20px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.2px}
+    .brand .logo{width:36px; height:36px; display:grid; place-items:center; background:conic-gradient(from 180deg,var(--accent),#ffd026,var(--accent-2)); border-radius:12px; color:#fff; font-weight:800}
+    .menu{display:flex; gap:18px; flex-wrap:wrap}
+    .menu a{padding:10px 14px; text-decoration:none; color:#1f2937; border-radius:12px; font-weight:500}
+    .menu a:hover,.menu a.active{background:#111827; color:#fff}
+    .cta{background:var(--accent); color:#fff !important; border-radius:14px; padding:10px 16px; font-weight:700; box-shadow:0 8px 20px rgba(255,106,0,.25)}
+    .cta:hover{filter:brightness(1.05)}
+
+    /* Hero */
+    .hero{max-width:var(--maxw); margin:0 auto; padding:40px 20px; display:grid; grid-template-columns:1.2fr .9fr; gap:24px; align-items:center}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; background:#111827; color:#fff; border-radius:999px; font-size:14px}
+    .title{font-size: clamp(28px, 4vw, 54px); line-height:1.1; margin:14px 0 10px}
+    .subtitle{font-size: clamp(16px, 2.2vw, 20px); color:#374151; margin:0 0 18px}
+    .hero-cards{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px}
+    .card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px}
+    .card h4{margin:0 0 6px}
+    .video-frame{position:relative; overflow:hidden; border-radius:22px; box-shadow:var(--shadow)}
+    .video-frame video{width:100%; height:100%; display:block}
+
+    /* Sections */
+    section{scroll-margin-top:86px}
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:60px 20px}
+    .sec-title{font-size: clamp(26px, 3.2vw, 38px); margin:0 0 10px}
+    .sec-sub{color:#4b5563; margin:0 0 24px}
+
+    /* Services */
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .service{display:flex; gap:14px; padding:18px; border-radius:18px; background:#ffffff; box-shadow:var(--shadow)}
+    .service .icon{width:44px; height:44px; border-radius:12px; display:grid; place-items:center; background:#111827; color:#fff; flex:0 0 auto}
+
+    /* Portfolio */
+    .masonry{columns: 3 260px; column-gap:14px}
+    .shot{break-inside:avoid; background:#fff; border-radius:16px; box-shadow:var(--shadow); margin:0 0 14px; overflow:hidden}
+    .shot img{width:100%; height:auto; display:block}
+    .shot .cap{padding:12px 14px}
+
+    /* Pricing */
+    .pricing{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .plan{background:#fff; border-radius:20px; box-shadow:var(--shadow); padding:22px; position:relative}
+    .plan.best{border:2px solid var(--accent)}
+    .plan h3{margin:0 0 6px}
+    .plan .price{font-size:32px; font-weight:800; margin:8px 0 14px}
+    .plan ul{margin:0; padding:0 0 0 18px}
+
+    /* About */
+    .about{display:grid; grid-template-columns:1.1fr .9fr; gap:18px}
+    .about .box{background:#fff; border-radius:20px; box-shadow:var(--shadow); padding:20px}
+    .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+    .stat{background:#111827; color:#fff; border-radius:16px; padding:16px; text-align:center}
+
+    /* Contact */
+    .contact{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    form{display:grid; gap:12px}
+    input, textarea, select{padding:12px 14px; border-radius:14px; border:1px solid #e5e7eb; font-family:inherit; font-size:16px}
+    button{padding:12px 16px; border-radius:14px; border:none; background:var(--accent); color:#fff; font-weight:700; cursor:pointer}
+    .map{border:0; width:100%; height:320px; border-radius:18px; box-shadow:var(--shadow)}
+
+    /* Footer */
+    footer{background:#0f1724; color:#cbd5e1}
+    .footer{max-width:var(--maxw); margin:0 auto; padding:26px 20px; display:grid; grid-template-columns:1.3fr .9fr .8fr; gap:16px}
+    .footer a{color:#cbd5e1; text-decoration:none}
+    .copy{border-top:1px solid rgba(255,255,255,.1); padding:12px 20px; text-align:center}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+      .hero-cards{grid-template-columns:1fr 1fr}
+      .pricing{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 720px){
+      .menu{display:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#home">
+        <span class="logo">P</span>
+        <span>Sign Shop</span>
+      </a>
+      <div class="menu" id="menu">
+        <a href="index.html">หน้าแรก</a>
+	      <a href="Service.html" class="active">บริการ</a>
+        <a href="Portfolio.html">ผลงาน</a>
+        <a href="Pricing.html">ราคา</a>
+        <a href="About.html">เกี่ยวกับเรา</a>
+        <a href="Contact.html" class="cta">ติดต่อเรา</a>
+      </div>
+      <button id="musicBtn" aria-label="เล่นเพลง" style="display:flex;align-items:center;gap:8px;background:#111827;color:#fff;border:none;border-radius:12px;padding:10px 14px">
+        <span id="musicIcon">▶︎</span> <span id="musicText">เปิดเพลง</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HIDDEN AUDIO (Background music) -->
+  <audio id="bgm" loop preload="auto">
+    <!-- ใส่ไฟล์ของคุณเอง ภายในโปรเจกต์: /assets/bg-music.mp3 -->
+    <source src="Call me crazy.mp3" type="audio/mpeg" />
+  </audio>
+
+<!-- SERVICES (หน้า 2: บริการ) -->
+<section id="services" class="wrap">
+  <h2 class="sec-title">บริการของเรา</h2>
+  <p class="sec-sub">ครบตั้งแต่การออกแบบ ผลิต ไปจนถึงติดตั้ง พร้อมคำแนะนำวัสดุ/เทคนิคให้เหมาะกับงบและการใช้งาน</p>
+
+  <!-- จุดเด่น -->
+  <div class="highlight">
+    <h3>ทำไมต้องเลือกเรา?</h3>
+    <ul>
+      <li>✔ วัสดุคุณภาพสูง อายุการใช้งานยาวนาน</li>
+      <li>✔ ทีมออกแบบมืออาชีพ ปรับให้เข้ากับแบรนด์ของคุณ</li>
+      <li>✔ ราคายุติธรรม พร้อมใบเสนอราคาชัดเจน</li>
+      <li>✔ ส่งมอบตรงเวลา มีการรับประกันงานติดตั้ง</li>
+    </ul>
+  </div>
+
+  <!-- บริการหลัก -->
+  <div class="grid-3">
+    <div class="service">
+      <div class="icon">🪧</div>
+      <div>
+        <h3>ป้ายไวนิล & อิงค์เจ็ท</h3>
+        <p>ความละเอียดสูง กันน้ำ เหมาะกับงานโปรโมชั่น ป้ายงานอีเวนต์</p>
+      </div>
+    </div>
+    <div class="service">
+      <div class="icon">💡</div>
+      <div>
+        <h3>ป้ายกล่องไฟ & LED</h3>
+        <p>สว่างชัด ประหยัดไฟ ตัวอักษร LED นูน/กัดกรด/ซ่อนไฟ</p>
+      </div>
+    </div>
+    <div class="service">
+      <div class="icon">🔤</div>
+      <div>
+        <h3>อะคริลิก & ตัวอักษรโลหะ</h3>
+        <p>งานพรีเมียม หน้าร้าน/เคาน์เตอร์โชว์รูม เพิ่มความน่าเชื่อถือ</p>
+      </div>
+    </div>
+    <div class="service">
+      <div class="icon">🏷️</div>
+      <div>
+        <h3>สติ๊กเกอร์ & ป้ายภายใน</h3>
+        <p>สติ๊กเกอร์ติดกระจก วอลล์กราฟิก ไดคัทตามรูป</p>
+      </div>
+    </div>
+    <div class="service">
+      <div class="icon">📐</div>
+      <div>
+        <h3>ออกแบบกราฟิก</h3>
+        <p>รีดีไซน์โลโก้ จัดเลย์เอาต์ป้าย เค้าโครงตามคอนเซ็ปต์แบรนด์</p>
+      </div>
+    </div>
+    <div class="service">
+      <div class="icon">🛠️</div>
+      <div>
+        <h3>ติดตั้งหน้างาน</h3>
+        <p>ทีมช่างมืออาชีพ มาตรฐานความปลอดภัย ตรวจเช็กหลังงาน</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ขั้นตอนการทำงาน -->
+  <div class="workflow">
+    <h3>ขั้นตอนการทำงานของเรา</h3>
+    <ol>
+      <li>ปรึกษาและประเมินความต้องการ</li>
+      <li>เสนอแบบและใบเสนอราคา</li>
+      <li>ผลิตด้วยเทคโนโลยีที่ทันสมัย</li>
+      <li>ติดตั้งและตรวจสอบคุณภาพ</li>
+    </ol>
+  </div>
+
+   <!-- ตัวอย่างผลงาน -->
+  <div class="portfolio-preview">
+    <h3>ผลงานล่าสุด</h3>
+    <img src="japanshop.jpg" alt="ตัวอย่างป้ายที่เราผลิต" style="width:100%;border-radius:10px;">
+  </div>
+</section>
+
+  <!-- Banner -->
+  <footer>
+    <div class="footer">
+      <div>
+        <div class="brand"><span class="logo">P</span><span>Sign Shop</span></div>
+        <p style="margin:8px 0 0">รับทำป้ายทุกชนิด ครบ จบ เร็ว สวยคมชัด ด้วยทีมงานมืออาชีพ</p>
+      </div>
+      <div>
+        <h4>บริการ</h4>
+        <ul style="margin:0; padding-left:18px">
+          <li>ป้ายไวนิล/สติ๊กเกอร์</li>
+          <li>ป้ายกล่องไฟ/LED</li>
+          <li>อะคริลิก/ตัวอักษรโลหะ</li>
+          <li>ออกแบบกราฟิก</li>
+        </ul>
+      </div>
+      <div>
+        <h4>ติดต่อ</h4>
+        <p style="margin:6px 0">โทร 092-257-6958</p>
+        <p style="margin:6px 0">LINE @signshop888</p>
+        <p style="margin:6px 0">อีเมล hello@signshop888.exe</p>
+      </div>
+    </div>
+    <div class="copy">© <span id="year"></span> Sign Shop. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Active link when scrolling
+    const menuLinks = [...document.querySelectorAll('.menu a')];
+    const sections = menuLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const onScroll = () => {
+      const pos = window.scrollY + 120;
+      let active = '#home';
+      for (const sec of sections){
+        if (pos >= sec.offsetTop) active = '#' + sec.id;
+      }
+      menuLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href')===active));
+    };
+    window.addEventListener('scroll', onScroll); onScroll();
+
+    // Background Music control
+    const bgm = document.getElementById('bgm');
+    const musicBtn = document.getElementById('musicBtn');
+    const musicIcon = document.getElementById('musicIcon');
+    const musicText = document.getElementById('musicText');
+    musicBtn.addEventListener('click', async () => {
+      try{
+        if(bgm.paused){ await bgm.play(); musicIcon.textContent='⏸'; musicText.textContent='หยุดเพลง'; }
+        else{ bgm.pause(); musicIcon.textContent='▶︎'; musicText.textContent='เปิดเพลง'; }
+      }catch(e){ alert('ไม่สามารถเล่นเพลงได้ โปรดตรวจสอบไฟล์หรือตั้งค่าเบราว์เซอร์'); }
+    });
+
+    // Simple form handler
+    function handleSubmit(form){
+      const data = Object.fromEntries(new FormData(form).entries());
+      const text = `ชื่อ: ${data.name}\nโทร: ${data.phone}\nอีเมล: ${data.email||'-'}\nบริการ: ${data.service}\nรายละเอียด: ${data.detail||'-'}`;
+      // mailto fallback (ผู้ใช้สามารถเปลี่ยนเป็นการส่งจริงผ่าน backend)
+      window.location.href = `mailto:hello@signpro.example?subject=ขอใบเสนอราคา&body=${encodeURIComponent(text)}`;
+      document.getElementById('formMsg').style.display='block';
+      form.reset();
+    }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
